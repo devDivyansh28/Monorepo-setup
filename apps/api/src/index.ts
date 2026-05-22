@@ -3,6 +3,14 @@ import express from 'express';
 import {createUserSchema} from "@monorepo/utils";
 
 import cors from "cors"
+import {createExpressMiddleware} from "@trpc/server/adapters/express"
+
+import {appRouter} from "@monorepo/trpc";
+
+
+
+
+
 
 
 const app = express();
@@ -12,29 +20,33 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-  res.json({message : "Hello world!!!"});
-});
 
-app.post('/users',  (req, res) => {
-  const result = createUserSchema.safeParse(req.body);
+app.use("/trpc",createExpressMiddleware({
+  router: appRouter,
+}))
+// app.get('/', (req, res) => {
+//   res.json({message : "Hello world!!!"});
+// });
 
-  if(!result.success) {
-    const message =  result.error.issues.map(issue => issue.message).join(", ");
+// app.post('/users',  (req, res) => {
+//   const result = createUserSchema.safeParse(req.body);
 
-   return res.status(400).json({
-    success:false,
-    error: message});
-  }
+//   if(!result.success) {
+//     const message =  result.error.issues.map(issue => issue.message).join(", ");
 
-  console.log(result.data);
+//    return res.status(400).json({
+//     success:false,
+//     error: message});
+//   }
 
-  return res.json({
-    success:true,
-    message:"User Created Successfully"
-  })
+//   console.log(result.data);
 
-});
+//   return res.json({
+//     success:true,
+//     message:"User Created Successfully"
+//   })
+
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

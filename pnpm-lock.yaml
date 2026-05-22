@@ -213,9 +213,15 @@ importers:
 
   apps/api:
     dependencies:
+      '@monorepo/trpc':
+        specifier: workspace:*
+        version: link:../../packages/trpc
       '@monorepo/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      '@trpc/server':
+        specifier: ^11.17.0
+        version: 11.17.0(typescript@6.0.3)
       '@types/cors':
         specifier: ^2.8.19
         version: 2.8.19
@@ -244,6 +250,9 @@ importers:
       '@monorepo/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      '@trpc/client':
+        specifier: ^11.17.0
+        version: 11.17.0(@trpc/server@11.17.0(typescript@5.9.3))(typescript@5.9.3)
       axios:
         specifier: ^1.16.1
         version: 1.16.1
@@ -940,6 +949,13 @@ packages:
 
   '@tailwindcss/postcss@4.3.0':
     resolution: {integrity: sha512-Jm05Tjx+9yCLGv5qw1c+84Psds8MnyrEQYCB+FFk2lgGiUjlRqdxke4mVTuYrj2xnVZqKim2Apr5ySuQRYAw/w==}
+
+  '@trpc/client@11.17.0':
+    resolution: {integrity: sha512-KpJBFrbKTDeVCFv/3ckL1XBBH5Yssn8hethI/rUy7GIpTj+VzjtPjykDqJpzobuVOz+d26cXCSu1t4I6MYI5Zg==}
+    hasBin: true
+    peerDependencies:
+      '@trpc/server': 11.17.0
+      typescript: '>=5.7.2'
 
   '@trpc/server@11.17.0':
     resolution: {integrity: sha512-jbAOUe0PpUTCYqziyu+8vYXZdDXPudZgnEhWCQ2NjKnVEjfE93RqHTt1oycZJv/HNf51YlRXfEEwSIAbb161rw==}
@@ -3209,6 +3225,15 @@ snapshots:
       '@tailwindcss/oxide': 4.3.0
       postcss: 8.5.15
       tailwindcss: 4.3.0
+
+  '@trpc/client@11.17.0(@trpc/server@11.17.0(typescript@5.9.3))(typescript@5.9.3)':
+    dependencies:
+      '@trpc/server': 11.17.0(typescript@5.9.3)
+      typescript: 5.9.3
+
+  '@trpc/server@11.17.0(typescript@5.9.3)':
+    dependencies:
+      typescript: 5.9.3
 
   '@trpc/server@11.17.0(typescript@6.0.3)':
     dependencies:
