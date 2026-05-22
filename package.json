@@ -6,6 +6,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts":{
+    "dev":"pnpm -r --parallel dev",
+    "build":"pnpm -r --parallel build"
+  },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
