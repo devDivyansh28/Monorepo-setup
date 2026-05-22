@@ -9,7 +9,8 @@
   },
   "type": "module",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1", 
+    "@monorepo/utils":"workspace:*"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",

@@ -209,6 +209,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@monorepo/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       express:
         specifier: ^5.2.1
         version: 5.2.1
