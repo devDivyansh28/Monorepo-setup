@@ -1,0 +1,16 @@
+{
+  "name": "@monorepo/trpc",
+  
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "script":{
+    "dev":"tsc --watch",
+    "build":"tsc"
+  },
+  "type": "module",
+  "dependencies": {
+    "@trpc/server": "^11.17.0"
+  }
+}
